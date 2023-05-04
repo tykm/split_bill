@@ -37,7 +37,6 @@ taxtotal = 258.15
 tiptotal = 309.77
 tax_multiplier = taxtotal / subtotal
 tip_multiplier = 1.20
-print(tax_multiplier)
 
 running_total = 0
 running_taxtotal = 0
