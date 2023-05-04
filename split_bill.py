@@ -32,17 +32,20 @@ shared = {
 }
 
 shared_per_person = sum(shared.values()) / len(food)
-tax_multiplier = 1.06625
-tip_multipler = 1.20
 subtotal = 242.58
 taxtotal = 258.15
 tiptotal = 309.77
+tax_multiplier = taxtotal / subtotal
+tip_multiplier = 1.20
+print(tax_multiplier)
 
 running_total = 0
+running_taxtotal = 0
 for person in food:
     cost = sum(food[person].values()) + shared_per_person
     cost *= tax_multiplier
-    cost *= tip_multipler
+    running_taxtotal += cost
+    cost *= tip_multiplier
     cost = round(cost, 2)
     #print(person + ": " + str(cost))
     print("{:<10}{:>25}".format(person, cost))
@@ -50,3 +53,4 @@ for person in food:
 
 print("\n{}:{:>10}".format("Sum of calculated totals", running_total))
 print("{}:{:>15}".format("Sum of actual total", tiptotal))
+print(running_taxtotal)
